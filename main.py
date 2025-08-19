@@ -1,12 +1,14 @@
 from stats import count_words, count_characters, sort_dictionary
+import sys
 
 def get_book_text(path_to_file):
     with open(path_to_file) as f:
         file_contents = f.read()
         print(file_contents)
 
-def main():
-    book_path = "books/frankenstein.txt"
+
+def main(book_path):
+    #book_path = "books/frankenstein.txt"
     word_count = count_words(book_path)
     character_count = count_characters(book_path)
     sorted_characters = sort_dictionary(count_characters(book_path))
@@ -22,4 +24,11 @@ Found {word_count} total words
         print(f"{c["char"]}: {c["num"]}")
     print("============= END ===============")
 
-main()
+#print(sys.argv)
+
+if len(sys.argv) != 2:
+    print("Usage: python3 main.py <path_to_book>")
+    sys.exit(1)
+    
+
+main(sys.argv[1])
