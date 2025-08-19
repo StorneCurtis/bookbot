@@ -1,15 +1,18 @@
-from collections import Counter
+from stats import count_characters
 
-def count_characters(path_to_file):
-    with open(path_to_file) as f:
-        file_contents = f.read().lower()
-        total_characters = len(file_contents)
-        cntr = Counter(file_contents)
+def sort_on(items):
+    return items["num"]
 
-       # A = file_contents.count("a")
-        print (cntr)
+def print_report(dict):
+    characters = []
+    for c in dict:
+        temp_dict = {}
+        temp_dict["char"] = c
+        temp_dict["num"] = dict[c]
+        characters.append(temp_dict)
+    characters.sort(reverse=True,key=sort_on)
+    
+    #print(characters)
+    return characters
 
-
-count_characters("books/frankenstein.txt")
-
-
+print_report(count_characters("books/frankenstein.txt"))
