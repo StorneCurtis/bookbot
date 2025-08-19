@@ -1,0 +1,15 @@
+from collections import Counter
+
+def count_characters(path_to_file):
+    with open(path_to_file) as f:
+        file_contents = f.read().lower()
+        total_characters = len(file_contents)
+        cntr = Counter(file_contents)
+
+       # A = file_contents.count("a")
+        print (cntr)
+
+
+count_characters("books/frankenstein.txt")
+
+
